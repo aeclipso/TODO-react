@@ -1,9 +1,10 @@
 .main{
     display: flex;
     flex-direction: column;
+    justify-content: space-around;
 
     width: 800px;
-    height: 100%;
+    min-height: 100%;
     margin: 0 auto;
     background-color: #303030;
 }
