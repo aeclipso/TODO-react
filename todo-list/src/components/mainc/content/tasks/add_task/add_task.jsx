@@ -2,13 +2,21 @@ import React from "react"
 import style from "./add_task.module.css"
 
 const AddTask = (props) => {
+
+    const newTaskElem = React.createRef();
+
+    let addTaskEl = () => {
+    let text = newTaskElem.current.value;
+    props.addTask(text);
+    }
+
     return(
         <div>
             <div className={style.textar}>
-                <textarea name="" id="" cols="30" rows="10"></textarea>
+                <textarea ref={newTaskElem}></textarea>
             </div>
             <div>
-                <button>Добавить задачу</button>
+                <button onClick={ addTaskEl }>Добавить задачу</button>
             </div>
         </div>
     )

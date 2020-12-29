@@ -3,11 +3,14 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import tasksProps from './data/state'
+import {BrowserRouter} from "react-router-dom";
+import {addTask} from './data/state'
 
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
+  <BrowserRouter>
+    <App tasksProps={tasksProps.objData} addTask={addTask}/>
+  </BrowserRouter>,
   document.getElementById('root')
 );
 

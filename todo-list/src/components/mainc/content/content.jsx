@@ -13,7 +13,7 @@ const Content = (props) => {
         <div className={style.content}>
             <p>content</p>
             {tasksTags}
-            <AddTask />
+            <AddTask addTask={props.addTask}/>
         </div>
     )
 }
