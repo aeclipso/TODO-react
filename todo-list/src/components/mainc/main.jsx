@@ -10,7 +10,8 @@ const Main = (props) => {
         <div className={style.main}>
             <Header />
             <Content tasksProps={props.taskProps}
-                    addTask={props.addTask}/>
+                    addTask={props.addTask}
+                    delTask={props.delTask} />
             <Footer />
         </div>
     )

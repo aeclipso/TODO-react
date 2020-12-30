@@ -1,27 +1,1 @@
-let tasksProps ={
-    objData: [
-        {id: 0, text: "text of the 1 task", title: "title of the task 1"},
-        {id: 1, text: "text of the 2 task", title: "title of the task 2"},
-        {id: 2, text: "text of the 3 task", title: "title of the task 3"},
-        {id: 3, text: "text of the 4 task", title: "title of the task 4"},
-        {id: 4, text: "text of the 5 task", title: "title of the task 5"}
-    ]
-}
-
-const getNextId = (propsObj) => {
-    return (propsObj.length);
-}
-
-export let addTask = (textTask) => {
-    let newTaskObj = {
-        id: "99",
-        text: textTask,
-        title: `title of the 99 task`
-    };
-
-    tasksProps.objData.push(newTaskObj);
-}
-
-
-
-export default tasksProps;
+import {doRenderComp} from "../render";let tasksProps ={    objData: [        // {id: 0, text: "text of the 1 task", title: "title of the task 1"},        // {id: 1, text: "text of the 2 task", title: "title of the task 2"},        // {id: 2, text: "text of the 3 task", title: "title of the task 3"},        // {id: 3, text: "text of the 4 task", title: "title of the task 4"},        // {id: 4, text: "text of the 5 task", title: "title of the task 5"}    ]}const getNextId = (propsObj) => {    return (propsObj.length + 1);}export let addTask = (textTask) => {    let newTaskObj = {        id: getNextId(tasksProps.objData),        text: textTask,        title: "",    };    // newTaskObj.id = getNextId(tasksProps.objData);    newTaskObj.title = `title of the task ${newTaskObj.id}`    tasksProps.objData.push(newTaskObj);    doRenderComp();}export let delTask = (idTask) => {    delete(tasksProps.objData[idTask - 1]);    doRenderComp();}export default tasksProps;

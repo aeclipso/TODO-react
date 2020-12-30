@@ -5,7 +5,10 @@ import Task from "./task/task";
 const Tasks = (props) => {
     return(
         <div className={style.tasks}>
-            <Task text={props.text} head={props.head}/>
+            <Task text={props.text}
+                  head={props.head}
+                  id={props.id}
+                  delTask={props.delTask}/>
         </div>
     )
 }
