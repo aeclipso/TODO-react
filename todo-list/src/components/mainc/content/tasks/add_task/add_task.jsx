@@ -4,10 +4,14 @@ import style from "./add_task.module.css"
 const AddTask = (props) => {
 
     const newTaskElem = React.createRef();
+    const newDate = React.createRef();
+    const newPriority = React.createRef();
 
     let addTaskEl = () => {
         let text = newTaskElem.current.value;
-        props.addTask(text);
+        let date = newDate.current.value;
+        let priority = newPriority.current.value;
+        props.addTask(text, date, priority);
     }
 
     let onTaskChange = () => {
@@ -23,10 +27,11 @@ const AddTask = (props) => {
 
                 <div className={style.otherinput}>
                     <div className={style.date}>
-                        <input type="date"/>
+                        <input type="date"
+                        ref={newDate}/>
                     </div>
                     <div className={style.priority}>
-                        <select>
+                        <select ref={newPriority}>
                             <option>Приоритет: срочный</option>
                             <option>Приоритет: средний</option>
                             <option>Приоритет: несрочный</option>

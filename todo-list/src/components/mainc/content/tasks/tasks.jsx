@@ -8,6 +8,8 @@ const Tasks = (props) => {
             <Task text={props.text}
                   head={props.head}
                   id={props.id}
+                  date={props.date}
+                  priority={props.priority}
                   delTask={props.delTask}/>
         </div>
     )
