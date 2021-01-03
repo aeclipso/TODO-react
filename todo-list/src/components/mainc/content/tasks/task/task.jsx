@@ -7,6 +7,7 @@ const Task = (props) => {
         <div className={style.task}>
             <h2>{props.head}</h2>
             <p>{props.text}</p>
+                
             <DelTask id={props.id}
                      delTask={props.delTask}/>
         </div>

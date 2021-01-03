@@ -1,10 +1,23 @@
 import React from 'react';
-import reportWebVitals from './reportWebVitals';
-import {doRenderComp} from "./render";
+import ReactDOM from 'react-dom';
+import './index.css';
+import App from './App';
+import {BrowserRouter} from "react-router-dom";
 
-doRenderComp();
+import tasksProps, {subscribe} from './data/state'
+import {addTask} from './data/state'
+import {delTask} from './data/state'
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+export let doRenderComp = () => {
+    ReactDOM.render(
+        <BrowserRouter>
+            <App tasksProps={tasksProps.objData}
+                 addTask={addTask}
+                 delTask={delTask}/>
+        </BrowserRouter>,
+        document.getElementById('root')
+    );
+}
+
+doRenderComp(tasksProps);
+subscribe(doRenderComp);

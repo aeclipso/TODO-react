@@ -16,10 +16,24 @@ const AddTask = (props) => {
 
     return(
         <div>
-            <div className={style.textarea}>
+            <div className={style.inputarea}>
                 <textarea ref={newTaskElem}
                           value={props.newTaskText}
                           onChange={onTaskChange}/>
+
+                <div className={style.otherinput}>
+                    <div className={style.date}>
+                        <input type="date"/>
+                    </div>
+                    <div className={style.priority}>
+                        <select>
+                            <option>Приоритет: срочный</option>
+                            <option>Приоритет: средний</option>
+                            <option>Приоритет: несрочный</option>
+                            <option>Приоритет: просрочено</option>
+                        </select>
+                    </div>
+                </div>
             </div>
             <div>
                 <button onClick={ addTaskEl }>Добавить задачу</button>
