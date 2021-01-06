@@ -4,9 +4,10 @@ import './index.css';
 import App from './App';
 import {BrowserRouter} from "react-router-dom";
 
-import tasksProps, {subscribe} from './data/state'
+import tasksProps, {getNextId, subscribe} from './data/state'
 import {addTask} from './data/state'
 import {delTask} from './data/state'
+
 
 export let doRenderComp = () => {
     ReactDOM.render(
@@ -19,5 +20,7 @@ export let doRenderComp = () => {
     );
 }
 
+tasksProps.loadProps();
 doRenderComp(tasksProps);
 subscribe(doRenderComp);
+tasksProps.saveProps();
