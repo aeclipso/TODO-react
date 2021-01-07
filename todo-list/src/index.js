@@ -20,7 +20,10 @@ export let doRenderComp = () => {
     );
 }
 
-tasksProps.loadProps();
+try{
+    tasksProps.loadProps();
+} catch (err){}
+
 doRenderComp(tasksProps);
 subscribe(doRenderComp);
 tasksProps.saveProps();
