@@ -8,7 +8,6 @@ import tasksProps, {getNextId, subscribe} from './data/state'
 import {addTask} from './data/state'
 import {delTask} from './data/state'
 
-
 export let doRenderComp = () => {
     ReactDOM.render(
         <BrowserRouter>
