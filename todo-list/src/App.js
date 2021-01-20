@@ -1,7 +1,7 @@
 import './App.css';
 import Main from "./components/mainc/main"
 
-function App(props) {
+const App = (props) => {
   return (
     <div className="App">
       <Main taskProps={props.tasksProps}

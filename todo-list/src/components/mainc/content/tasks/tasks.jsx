@@ -3,6 +3,7 @@ import style from "./tasks.module.css"
 import Task from "./task/task";
 
 const Tasks = (props) => {
+
     return(
         <div className={style.tasks}>
             <Task text={props.text}
@@ -11,6 +12,7 @@ const Tasks = (props) => {
                   date={props.date}
                   priority={props.priority}
                   delTask={props.delTask}/>
+
         </div>
     )
 }
