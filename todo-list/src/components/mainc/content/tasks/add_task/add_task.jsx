@@ -1,47 +1,64 @@
-import React from "react"
+import React, {useState} from "react"
 import style from "./add_task.module.css"
+import {addTask} from "../../../../../data/state";
 
 const AddTask = (props) => {
 
-    const newTaskElem = React.createRef();
-    const newDate = React.createRef();
-    const newPriority = React.createRef();
+    let options = [
+        "срочный",
+        "средний",
+        "несрочный",
+        "просрочено",
+    ]
 
-    let addTaskEl = () => {
-        let text = newTaskElem.current.value;
-        let date = newDate.current.value;
-        let priority = newPriority.current.value;
-        props.addTask(text, date, priority);
-    }
+    let optionTags = options.map( (getOption) => {
+        return(
+            <option> Приоритет: {getOption} </option>
+        );
+    });
 
-    let onTaskChange = () => {
+  const [form, setForm] = useState({
+      text: '',
+      date: '',
+      priority: 'Приоритет: срочный'
+  })
 
+    const update = (e) => {
+      console.log(e);
+      setForm({
+          ...form,
+          [e.target.name]: e.target.value
+      });
+    };
+
+    const addTaskEl = () => {
+      props.addTask(form.text, form.date, form.priority);
     }
 
     return(
         <div>
-            <div className={style.inputarea}>
-                <textarea ref={newTaskElem}
+            <div>
+                <textarea className={style.inputarea}
                           value={props.newTaskText}
-                          onChange={onTaskChange}/>
-
+                          name='text'
+                          onChange={update} />
+            </div>
                 <div className={style.otherinput}>
-                    <div className={style.date}>
-                        <input type="date"
-                        ref={newDate}/>
+                    <div>
+                        <input  className={style.inputs + ' ' + style.inputs_size}
+                                type="date"
+                                onChange={update}
+                                name='date'/>
                     </div>
-                    <div className={style.priority}>
-                        <select ref={newPriority}>
-                            <option>Приоритет: срочный</option>
-                            <option>Приоритет: средний</option>
-                            <option>Приоритет: несрочный</option>
-                            <option>Приоритет: просрочено</option>
+                    <div>
+                        <select className={style.inputs + ' ' + style.inputs_size}
+                                onChange={update} name='priority'>
+                            {optionTags}
                         </select>
                     </div>
                 </div>
-            </div>
             <div>
-                <button onClick={ addTaskEl }>Добавить задачу</button>
+                <button className={style.inputs_border} onClick={ addTaskEl }>Добавить задачу</button>
             </div>
         </div>
     )
