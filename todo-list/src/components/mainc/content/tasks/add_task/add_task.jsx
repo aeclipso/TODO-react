@@ -71,3 +71,6 @@ export const AddTask = ({ addTask }, props) => {
   );
 };
 
+AddTask.propTypes = {
+  addTask: PropTypes.func
+}

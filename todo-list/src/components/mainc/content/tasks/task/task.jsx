@@ -14,7 +14,6 @@ export const Task = ({
   const deleteTaskEl = () => {
     delTask(delTaskElem);
   };
-console.log(key);
   return (
     <div className={style.task} key={key}>
       <h2>{head}</h2>

@@ -2,25 +2,27 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import style from './content.module.css';
 import { Tasks } from './tasks/tasks';
-import { AddTask } from './tasks/add_task/add_task'
-import { SortBtn} from './sort_btn/sort_btn'
+import { AddTask } from './tasks/add_task/add_task';
+import { SortBtn } from './sort_btn/sort_btn';
 
 export const Content = ({
   tasksProps,
   addTask,
-  delTask
+  delTask,
 }) => {
   const tasksTags = tasksProps.map((getTag) => (
     <Tasks
-      text={getTag.text}
       key={getTag.id}
+      text={getTag.text}
       head={getTag.title}
       date={getTag.date}
       priority={getTag.priority}
       delTask={delTask}
     />
   ));
-console.log(tasksProps);
+  console.log(tasksProps);
+  console.log(tasksTags);
+  window.global = tasksTags;
   return (
     <div className={style.content}>
       <SortBtn />
@@ -30,8 +32,9 @@ console.log(tasksProps);
   );
 };
 
+
 Content.propTypes = {
   taskProps: PropTypes.object,
   addTask: PropTypes.func,
   delTask: PropTypes.func
-}
+};

@@ -1,12 +1,12 @@
 import React from 'react';
-import style from './main.module.css';
 import PropTypes from 'prop-types';
+import style from './main.module.css';
 import { Content } from './content/content';
 
 export const Main = ({
   taskProps,
   addTask,
-  delTask
+  delTask,
 }) => (
   <div className={style.main}>
     <Content
@@ -20,5 +20,5 @@ export const Main = ({
 Main.propTypes = {
   taskProps: PropTypes.any,
   addTask: PropTypes.func,
-  delTask: PropTypes.func
-}
+  delTask: PropTypes.func,
+};

@@ -3,8 +3,8 @@ import { saveProps } from '../services/localstorage';
 let doRenderComp = () => {};
 const tasksProps = {
   objData: [],
-
 };
+
 export const getNextId = (propsObj) => {
   const len = propsObj.objData.length - 1;
   try {
@@ -13,6 +13,7 @@ export const getNextId = (propsObj) => {
     return 0;
   }
 };
+
 export const addTask = (textTask, dateTask, priorityTask) => {
   const newTaskObj = {
     id: getNextId(tasksProps),
