@@ -1,1 +1,37 @@
-import React from "react"import style from "./content.module.css"import Tasks from "./tasks/tasks"import AddTask from "./tasks/add_task/add_task";const Content = (props) => {    let tasksTags = props.tasksProps.map( (getTg) => {        return( <Tasks            text={getTg.text}            head={getTg.title}            id={getTg.id}            date={getTg.date}            priority={getTg.priority}            delTask={props.delTask}        />);    });    return(        <div className={style.content}>            <p>content</p>            {tasksTags}            <AddTask addTask={props.addTask}/>        </div>    )}export default Content;
+import React from 'react';
+import PropTypes from 'prop-types';
+import style from './content.module.css';
+import { Tasks } from './tasks/tasks';
+import { AddTask } from './tasks/add_task/add_task'
+import { SortBtn} from './sort_btn/sort_btn'
+
+export const Content = ({
+  tasksProps,
+  addTask,
+  delTask
+}) => {
+  const tasksTags = tasksProps.map((getTag) => (
+    <Tasks
+      text={getTag.text}
+      key={getTag.id}
+      head={getTag.title}
+      date={getTag.date}
+      priority={getTag.priority}
+      delTask={delTask}
+    />
+  ));
+console.log(tasksProps);
+  return (
+    <div className={style.content}>
+      <SortBtn />
+      {tasksTags}
+      <AddTask addTask={addTask} />
+    </div>
+  );
+};
+
+Content.propTypes = {
+  taskProps: PropTypes.object,
+  addTask: PropTypes.func,
+  delTask: PropTypes.func
+}

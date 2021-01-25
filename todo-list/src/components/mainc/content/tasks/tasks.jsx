@@ -1,20 +1,32 @@
-import React from "react"
-import style from "./tasks.module.css"
-import Task from "./task/task";
+import React from 'react';
+import style from './tasks.module.css';
+import PropTypes from 'prop-types';
+import { Task } from './task/task';
 
-const Tasks = (props) => {
+export const Tasks = ({
+  text,
+  head,
+  id,
+  date,
+  priority,
+  delTask }) => (
+  <div className={style.tasks}>
+    <Task
+      text={text}
+      head={head}
+      key={id}
+      date={date}
+      priority={priority}
+      delTask={delTask}
+    />
+  </div>
+);
 
-    return(
-        <div className={style.tasks}>
-            <Task text={props.text}
-                  head={props.head}
-                  id={props.id}
-                  date={props.date}
-                  priority={props.priority}
-                  delTask={props.delTask}/>
-
-        </div>
-    )
+Tasks.propTypes = {
+  text: PropTypes.string,
+  head: PropTypes.string,
+  key: PropTypes.number,
+  date: PropTypes.number,
+  priority: PropTypes.string,
+  delTask: PropTypes.func
 }
-
-export default Tasks;

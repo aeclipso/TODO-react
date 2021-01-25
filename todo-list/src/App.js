@@ -1,15 +1,24 @@
 import './App.css';
-import Main from "./components/mainc/main"
+import React from 'react';
+import PropTypes from 'prop-types';
+import { Main } from './components/mainc/main';
 
-const App = (props) => {
+export const App = ({
+  tasksProps,
+  addTask,
+  delTask }) => {
   return (
     <div className="App">
-      <Main taskProps={props.tasksProps}
-            addTask={props.addTask}
-            delTask={props.delTask}
+      <Main
+        taskProps={tasksProps}
+        addTask={addTask}
+        delTask={delTask}
       />
-    </div>
-  );
-}
+    </div>);
+};
 
-export default App;
+App.propTypes = {
+  taskProps: PropTypes.object,
+  addTask: PropTypes.func,
+  delTask: PropTypes.func
+}

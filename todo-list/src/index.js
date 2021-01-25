@@ -1,28 +1,29 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
-import {BrowserRouter} from "react-router-dom";
+import { BrowserRouter } from 'react-router-dom';
+import { App } from './App';
 
-import tasksProps, {getNextId, subscribe} from './data/state'
-import {addTask} from './data/state'
-import {delTask} from './data/state'
+import tasksProps, { subscribe, addTask, delTask } from './data/state';
+import { saveProps, loadProps } from './services/localstorage';
 
 export let doRenderComp = () => {
-    ReactDOM.render(
-        <BrowserRouter>
-            <App tasksProps={tasksProps.objData}
-                 addTask={addTask}
-                 delTask={delTask}/>
-        </BrowserRouter>,
-        document.getElementById('root')
-    );
-}
+  ReactDOM.render(
+    <BrowserRouter>
+      <App
+        tasksProps={tasksProps.objData}
+        addTask={addTask}
+        delTask={delTask}
+      />
+    </BrowserRouter>,
+    document.getElementById('root'),
+  );
+};
 
-try{
-    tasksProps.loadProps();
-} catch (err){}
+try {
+  tasksProps.objData = loadProps();
+} catch (err) {}
 
 doRenderComp(tasksProps);
 subscribe(doRenderComp);
-tasksProps.saveProps();
+saveProps(tasksProps.objData);
