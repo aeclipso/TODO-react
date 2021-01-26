@@ -12,7 +12,8 @@ export const Content = ({
 }) => {
   const tasksTags = tasksProps.map((getTag) => (
     <Tasks
-      key={getTag.id}
+      key={tasksProps.id}
+      id={getTag.id}
       text={getTag.text}
       head={getTag.title}
       date={getTag.date}
@@ -20,9 +21,7 @@ export const Content = ({
       delTask={delTask}
     />
   ));
-  console.log(tasksProps);
-  console.log(tasksTags);
-  window.global = tasksTags;
+
   return (
     <div className={style.content}>
       <SortBtn />
@@ -31,7 +30,6 @@ export const Content = ({
     </div>
   );
 };
-
 
 Content.propTypes = {
   taskProps: PropTypes.object,

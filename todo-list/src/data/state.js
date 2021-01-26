@@ -12,6 +12,7 @@ export const getNextId = (propsObj) => {
   } catch (err) {
     return 0;
   }
+  // return propsObj.objData.reduce((acc, obj) => Math.max(acc, obj.id), -1) + 1;
 };
 
 export const addTask = (textTask, dateTask, priorityTask) => {
@@ -37,6 +38,7 @@ export const addTask = (textTask, dateTask, priorityTask) => {
 };
 export const delTask = (idTask) => {
   let idForDel;
+  console.log("IDTASTDEL: "+ idTask);
   for (let i = 0; i < tasksProps.objData.length; i += 1) {
     if (tasksProps.objData[i].id === idTask) {
       idForDel = i;
@@ -55,7 +57,5 @@ export default tasksProps;
 
 // TODO: 1) добавить возможность редактирования
 // TODO: 2) добавить возможность помечать задачу выполненой
-// TODO: 3) добавить возможность определять тип задачи (рабочая/личная) возможно
-//  убрать приоритет и добавить это
 // TODO: 4) добавить цветовое выделение задачи, чтобы знать какая задача скоро просрочится
 // TODO: 5) добавить сортировку по дате и типу

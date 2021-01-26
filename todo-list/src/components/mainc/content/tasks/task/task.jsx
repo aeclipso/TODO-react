@@ -5,18 +5,19 @@ import PropTypes from 'prop-types';
 export const Task = ({
   text,
   head,
-  key,
+  id,
   date,
   priority,
   delTask
 }) => {
-  const delTaskElem = key;
+  const delTaskElem = id;
   const deleteTaskEl = () => {
     delTask(delTaskElem);
   };
   return (
-    <div className={style.task} key={key}>
+    <div className={style.task} id={id}>
       <h2>{head}</h2>
+      <p>{id}</p>
       <p>{text}</p>
       <p>{date}</p>
       <p>{priority}</p>

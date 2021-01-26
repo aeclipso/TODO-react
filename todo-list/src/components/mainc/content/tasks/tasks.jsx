@@ -6,7 +6,7 @@ import { Task } from './task/task';
 export const Tasks = ({
   text,
   head,
-  key,
+  id,
   date,
   priority,
   delTask,
@@ -15,7 +15,7 @@ export const Tasks = ({
     <Task
       text={text}
       head={head}
-      key={key}
+      id={id}
       date={date}
       priority={priority}
       delTask={delTask}
