@@ -9,6 +9,8 @@ export const Content = ({
   tasksProps,
   addTask,
   delTask,
+  getNextSort,
+  sortIndex
 }) => {
   const tasksTags = tasksProps.map((getTag) => (
     <Tasks
@@ -24,7 +26,9 @@ export const Content = ({
 
   return (
     <div className={style.content}>
-      <SortBtn />
+      <SortBtn
+        getNextSort={getNextSort}
+        sortIndex={sortIndex}/>
       {tasksTags}
       <AddTask addTask={addTask} />
     </div>

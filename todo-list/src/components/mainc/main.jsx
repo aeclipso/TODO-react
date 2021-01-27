@@ -7,12 +7,16 @@ export const Main = ({
   taskProps,
   addTask,
   delTask,
+  getNextSort,
+  sortIndex
 }) => (
   <div className={style.main}>
     <Content
       tasksProps={taskProps}
       addTask={addTask}
       delTask={delTask}
+      getNextSort={getNextSort}
+      sortIndex={sortIndex}
     />
   </div>
 );
@@ -21,4 +25,6 @@ Main.propTypes = {
   taskProps: PropTypes.any,
   addTask: PropTypes.func,
   delTask: PropTypes.func,
+  getNextSort: PropTypes.func,
+  sortIndex: PropTypes.number
 };

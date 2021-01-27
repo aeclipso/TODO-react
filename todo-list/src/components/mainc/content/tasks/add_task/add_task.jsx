@@ -12,8 +12,8 @@ export const AddTask = ({ addTask }, props) => {
 
   const optionTags = options.map((getOption) => (
     <option>
-      {' '}
       Приоритет:
+      {' '}
       {getOption}
     </option>
   ));

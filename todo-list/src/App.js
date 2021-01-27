@@ -6,13 +6,18 @@ import { Main } from './components/mainc/main';
 export const App = ({
   tasksProps,
   addTask,
-  delTask }) => {
+  delTask,
+  getNextSort,
+  sortIndex
+}) => {
   return (
     <div className="App">
       <Main
         taskProps={tasksProps}
         addTask={addTask}
         delTask={delTask}
+        getNextSort={getNextSort}
+        sortIndex={sortIndex}
       />
     </div>);
 };
@@ -20,5 +25,7 @@ export const App = ({
 App.propTypes = {
   taskProps: PropTypes.object,
   addTask: PropTypes.func,
-  delTask: PropTypes.func
+  delTask: PropTypes.func,
+  getNextSort: PropTypes.func,
+  sortIndex: PropTypes.number
 }

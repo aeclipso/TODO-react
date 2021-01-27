@@ -1,26 +1,39 @@
-import React from 'react';
+import React, { useState } from 'react'
 import PropTypes from 'prop-types';
 
-export const SortBtn = ({ stateSortButton }) => {
-  let nameBtn;
+export const SortBtn = ({
+  getNextSort,
+  sortIndex
+}) => {
+  const nameArrBtn = [
+    'Не отсортировано',
+    'По важности',
+    'По сроку истечения'
+  ];
 
-  if (stateSortButton === 0) {
-    nameBtn = 'По важности';
-  } else if (stateSortButton === 1) {
-    nameBtn = 'По алфавиту';
-  } else if (stateSortButton === 2) {
-    nameBtn = 'По сроку истечения';
-  } else {
-    nameBtn = 'UNDEF';
+  const [btn, setBtn] = useState({
+    sortIndex: 0,
+  });
+
+  const update = (e) => {
+    setBtn({
+      ...btn,
+      [e.target.name]: e.tartet.value,
+    });
+ };
+
+  const doSortElement = () => {
+    getNextSort(sortIndex);
   }
 
   return (
     <div>
-      <button>{nameBtn}</button>
+      <button onClick={doSortElement} >{nameArrBtn[sortIndex]}</button>
     </div>
   );
 };
 
 SortBtn.propType = {
-  stateSortButton: PropTypes.number,
+  getNextSort: PropTypes.func,
+  sortIndex: PropTypes.number
 };
