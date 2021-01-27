@@ -20,7 +20,7 @@ export const AddTask = ({ addTask }, props) => {
 
   const [form, setForm] = useState({
     text: '-',
-    date: Date.now(),
+    date: Date,
     priority: 'Приоритет: срочный',
   });
 

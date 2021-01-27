@@ -18,7 +18,7 @@ export const SortBtn = ({
   const update = (e) => {
     setBtn({
       ...btn,
-      [e.target.name]: e.tartet.value,
+      [e.target.name]: e.target.value,
     });
  };
 
@@ -28,7 +28,7 @@ export const SortBtn = ({
 
   return (
     <div>
-      <button onClick={doSortElement} >{nameArrBtn[sortIndex]}</button>
+      <button onClick={doSortElement} onChange={update}>{nameArrBtn[sortIndex]}</button>
     </div>
   );
 };

@@ -73,13 +73,13 @@ export const getNextSort = (typeOfSort) => {
 }
 
 export const getNextId = (propsObj) => {
-  const len = propsObj.objData.length - 1;
-  try {
-    return propsObj.objData[len].id + 1;
-  } catch (err) {
-    return 0;
-  }
-  // return propsObj.objData.reduce((acc, obj) => Math.max(acc, obj.id), -1) + 1;
+  // const len = propsObj.objData.length - 1;
+  // try {
+  //   return propsObj.objData[len].id + 1;
+  // } catch (err) {
+  //   return 0;
+  // }
+  return propsObj.objData.reduce((acc, obj) => Math.max(acc, obj.id), -1) + 1;
 };
 
 export const addTask = (textTask, dateTask, priorityTask) => {
@@ -100,6 +100,8 @@ export const addTask = (textTask, dateTask, priorityTask) => {
     newTaskObj.text = ' - ';
   }
   tasksProps.objData.push(newTaskObj);
+  sortIndex = 0;
+  getNextSort(sortIndex);
   doRenderComp(tasksProps);
   saveProps(tasksProps.objData);
 };
