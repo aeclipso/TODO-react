@@ -1,4 +1,5 @@
 import { saveProps } from '../services/localstorage';
+import moment from 'moment'
 
 let doRenderComp = () => {};
 export let sortIndex = 0;
@@ -11,17 +12,17 @@ const sortById = (object) => {
 }
 
 const getValueOfPriority = (priority) =>{
-  if (priority === 'Приоритет: срочный'){
+  if (priority === 'Тип задачи: рабочая'){
     return (4);
   }
-  else if(priority === 'Приоритет: средний'){
+  else if(priority === 'Тип задачи: личная'){
     return (3);
   }
-  else if( priority === 'Приоритет: несрочный'){
+  else if( priority === 'Тип задачи: семейная'){
     return (2);
   }
-  else if(priority === 'Приоритет: просрочено'){
-    return (100);
+  else if(priority === 'Тип задачи: дужеская'){
+    return (1);
   }
   else{
     return (0);
@@ -42,25 +43,21 @@ export const getNextSort = (typeOfSort) => {
       sortById(tasksProps.objData);
       doRenderComp(tasksProps);
       saveProps(tasksProps.objData);
-      console.log("0");
       break;
     case  1:
       sortByPriority(tasksProps.objData);
       doRenderComp(tasksProps);
       saveProps(tasksProps.objData);
-      console.log("1");
       break;
     case 2:
       sortByDate(tasksProps.objData);
       doRenderComp(tasksProps);
       saveProps(tasksProps.objData);
-      console.log("2");
       break;
     default:
       sortById(tasksProps.objData);
       doRenderComp(tasksProps);
       saveProps(tasksProps.objData);
-      console.log("3");
       break;
   }
   if (sortIndex < 2){
@@ -69,32 +66,37 @@ export const getNextSort = (typeOfSort) => {
   else {
     sortIndex = 0;
   }
-  console.log(tasksProps.objData);
 }
 
 export const getNextId = (propsObj) => {
-  // const len = propsObj.objData.length - 1;
-  // try {
-  //   return propsObj.objData[len].id + 1;
-  // } catch (err) {
-  //   return 0;
-  // }
   return propsObj.objData.reduce((acc, obj) => Math.max(acc, obj.id), -1) + 1;
 };
 
 export const addTask = (textTask, dateTask, priorityTask) => {
+  let day;
   const newTaskObj = {
     id: getNextId(tasksProps),
     text: textTask,
     title: '',
     date: dateTask,
     priority: priorityTask,
+    colorLeft: '#303030',
+    colorRight: '#505050'
   };
 
   newTaskObj.title = `title of the task ${newTaskObj.id}`;
   newTaskObj.id = getNextId(tasksProps);
-  if (newTaskObj.date === '') {
-    newTaskObj.date = Date;
+  if (typeof(newTaskObj.date) === 'string') {
+    day =  moment(newTaskObj.date);
+    newTaskObj.date = day.format('dd DD MM YYYY');
+    if (newTaskObj.date === 'Invalid date'){
+      day = moment();
+      newTaskObj.date = day.format('dd DD MM YYYY');
+    }
+  }
+  else if (typeof(newTaskObj.date) === 'function') {
+    day = moment();
+    newTaskObj.date = day.format('dd DD MM YYYY');
   }
   if (newTaskObj.text === '') {
     newTaskObj.text = ' - ';
@@ -121,6 +123,10 @@ export const delTask = (idTask) => {
 export const subscribe = (observer) => {
   doRenderComp = observer;
 };
+
+export const getColorForTask = (dateTime) => {
+ console.log("This Function is deactivated");
+}
 export default tasksProps;
 
 // TODO: 1) добавить возможность редактирования

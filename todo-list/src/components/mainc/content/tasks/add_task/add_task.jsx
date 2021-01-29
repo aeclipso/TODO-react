@@ -1,18 +1,19 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import style from './add_task.module.css';
+import moment from 'moment'
 
 export const AddTask = ({ addTask }, props) => {
   const options = [
-    'срочный',
-    'средний',
-    'несрочный',
-    'просрочено',
+    'рабочая',
+    'личная',
+    'семейная',
+    'дружеская',
   ];
 
   const optionTags = options.map((getOption) => (
     <option>
-      Приоритет:
+      Тип задачи:
       {' '}
       {getOption}
     </option>
@@ -21,7 +22,7 @@ export const AddTask = ({ addTask }, props) => {
   const [form, setForm] = useState({
     text: '-',
     date: Date,
-    priority: 'Приоритет: срочный',
+    priority: 'Тип задачи: рабочая',
   });
 
   const update = (e) => {
