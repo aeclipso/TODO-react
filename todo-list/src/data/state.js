@@ -1,5 +1,5 @@
 import { saveProps } from '../services/localstorage';
-import moment from 'moment'
+import moment, { now } from 'moment'
 
 let doRenderComp = () => {};
 export let sortIndex = 0;
@@ -80,6 +80,7 @@ export const addTask = (textTask, dateTask, priorityTask) => {
     title: '',
     date: dateTask,
     priority: priorityTask,
+    complete: false,
     colorLeft: '#303030',
     colorRight: '#505050'
   };
@@ -98,6 +99,7 @@ export const addTask = (textTask, dateTask, priorityTask) => {
     day = moment();
     newTaskObj.date = day.format('dd DD MM YYYY');
   }
+  console.log("111");
   if (newTaskObj.text === '') {
     newTaskObj.text = ' - ';
   }
@@ -124,9 +126,15 @@ export const subscribe = (observer) => {
   doRenderComp = observer;
 };
 
-export const getColorForTask = (dateTime) => {
- console.log("This Function is deactivated");
-}
+export const getDiffDate = (taskDate) => {
+  let day1 = moment(taskDate);
+  let day2 = moment("2023-11-12");
+  console.log(day1);
+  console.log(day2);
+ let diff =  (moment(day2).unix() - moment(day1).unix()) / (60 * 60 * 24);
+ console.log(diff);
+
+};
 export default tasksProps;
 
 // TODO: 1) добавить возможность редактирования

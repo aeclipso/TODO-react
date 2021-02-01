@@ -4,7 +4,7 @@ import './index.css';
 import { BrowserRouter } from 'react-router-dom';
 import { App } from './App';
 
-import tasksProps, { subscribe, addTask, delTask, getNextSort, sortIndex, getColorForTask } from './data/state'
+import tasksProps, { subscribe, addTask, delTask, getNextSort, sortIndex, getDiffDate } from './data/state'
 import { saveProps, loadProps } from './services/localstorage';
 
 export let doRenderComp = () => {
@@ -29,4 +29,4 @@ try {
 doRenderComp(tasksProps);
 subscribe(doRenderComp);
 saveProps(tasksProps.objData);
-getColorForTask();
+getDiffDate(tasksProps.objData.date);
