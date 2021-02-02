@@ -53,6 +53,7 @@ export const AddTask = ({ addTask }, props) => {
             type="date"
             onChange={update}
             name="date"
+
           />
         </div>
         <div>

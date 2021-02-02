@@ -29,4 +29,3 @@ try {
 doRenderComp(tasksProps);
 subscribe(doRenderComp);
 saveProps(tasksProps.objData);
-getDiffDate(tasksProps.objData.date);

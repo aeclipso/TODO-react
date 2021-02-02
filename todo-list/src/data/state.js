@@ -126,15 +126,6 @@ export const subscribe = (observer) => {
   doRenderComp = observer;
 };
 
-export const getDiffDate = (taskDate) => {
-  let day1 = moment(taskDate);
-  let day2 = moment("2023-11-12");
-  console.log(day1);
-  console.log(day2);
- let diff =  (moment(day2).unix() - moment(day1).unix()) / (60 * 60 * 24);
- console.log(diff);
-
-};
 export default tasksProps;
 
 // TODO: 1) добавить возможность редактирования

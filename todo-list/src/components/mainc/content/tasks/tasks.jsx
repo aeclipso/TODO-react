@@ -10,6 +10,7 @@ export const Tasks = ({
   date,
   priority,
   delTask,
+  complete
 }) => (
   <div className={style.tasks}>
     <Task
@@ -18,6 +19,7 @@ export const Tasks = ({
       id={id}
       date={date}
       priority={priority}
+      complete={complete}
       delTask={delTask}
     />
   </div>
@@ -29,5 +31,6 @@ Tasks.propTypes = {
   key: PropTypes.number,
   date: PropTypes.number,
   priority: PropTypes.string,
+  complete: PropTypes.bool,
   delTask: PropTypes.func,
 };

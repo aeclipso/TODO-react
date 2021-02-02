@@ -20,6 +20,7 @@ export const Content = ({
       head={getTag.title}
       date={getTag.date}
       priority={getTag.priority}
+      complete={getTag.complete}
       delTask={delTask}
     />
   ));
