@@ -1,0 +1,15 @@
+.disabled{
+    display: none;
+}
+
+.edit{
+    background-color: #acacac77;
+    display: flex;
+    flex-direction: column;
+    padding: 30px;
+}
+
+textarea{
+    resize: none;
+    width: 77%;
+}

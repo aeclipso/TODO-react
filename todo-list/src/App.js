@@ -8,7 +8,8 @@ export const App = ({
   addTask,
   delTask,
   getNextSort,
-  sortIndex
+  sortIndex,
+  changeComplete
 }) => {
   return (
     <div className="App">
@@ -18,6 +19,7 @@ export const App = ({
         delTask={delTask}
         getNextSort={getNextSort}
         sortIndex={sortIndex}
+        changeComplete={changeComplete}
       />
     </div>);
 };

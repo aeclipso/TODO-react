@@ -1,5 +1,4 @@
 import { saveProps } from '../services/localstorage';
-import moment, { now } from 'moment'
 
 let doRenderComp = () => {};
 export let sortIndex = 0;
@@ -72,8 +71,21 @@ export const getNextId = (propsObj) => {
   return propsObj.objData.reduce((acc, obj) => Math.max(acc, obj.id), -1) + 1;
 };
 
+const getIdComplete = (id) => {
+  for (let i = 0; i < tasksProps.objData.length; i += 1) {
+    if (tasksProps.objData[i].id === id) {
+      return (i);
+    }
+  }
+  return (0);
+}
+
+export const changeComplete = (completeCheck, id) => {
+  tasksProps.objData[getIdComplete(id)].complete = completeCheck;
+  saveProps(tasksProps.objData);
+}
+
 export const addTask = (textTask, dateTask, priorityTask) => {
-  let day;
   const newTaskObj = {
     id: getNextId(tasksProps),
     text: textTask,
@@ -81,25 +93,9 @@ export const addTask = (textTask, dateTask, priorityTask) => {
     date: dateTask,
     priority: priorityTask,
     complete: false,
-    colorLeft: '#303030',
-    colorRight: '#505050'
   };
-
   newTaskObj.title = `title of the task ${newTaskObj.id}`;
   newTaskObj.id = getNextId(tasksProps);
-  if (typeof(newTaskObj.date) === 'string') {
-    day =  moment(newTaskObj.date);
-    newTaskObj.date = day.format('dd DD MM YYYY');
-    if (newTaskObj.date === 'Invalid date'){
-      day = moment();
-      newTaskObj.date = day.format('dd DD MM YYYY');
-    }
-  }
-  else if (typeof(newTaskObj.date) === 'function') {
-    day = moment();
-    newTaskObj.date = day.format('dd DD MM YYYY');
-  }
-  console.log("111");
   if (newTaskObj.text === '') {
     newTaskObj.text = ' - ';
   }
@@ -109,6 +105,7 @@ export const addTask = (textTask, dateTask, priorityTask) => {
   doRenderComp(tasksProps);
   saveProps(tasksProps.objData);
 };
+
 export const delTask = (idTask) => {
   let idForDel;
   for (let i = 0; i < tasksProps.objData.length; i += 1) {
@@ -129,5 +126,3 @@ export const subscribe = (observer) => {
 export default tasksProps;
 
 // TODO: 1) добавить возможность редактирования
-// TODO: 2) добавить возможность помечать задачу выполненой
-// TODO: 4) добавить цветовое выделение задачи, чтобы знать какая задача скоро просрочится

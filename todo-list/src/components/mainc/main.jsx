@@ -8,7 +8,8 @@ export const Main = ({
   addTask,
   delTask,
   getNextSort,
-  sortIndex
+  sortIndex,
+  changeComplete
 }) => (
   <div className={style.main}>
     <Content
@@ -17,6 +18,7 @@ export const Main = ({
       delTask={delTask}
       getNextSort={getNextSort}
       sortIndex={sortIndex}
+      changeComplete={changeComplete}
     />
   </div>
 );

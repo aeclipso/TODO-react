@@ -4,7 +4,7 @@ import './index.css';
 import { BrowserRouter } from 'react-router-dom';
 import { App } from './App';
 
-import tasksProps, { subscribe, addTask, delTask, getNextSort, sortIndex, getDiffDate } from './data/state'
+import tasksProps, { subscribe, addTask, delTask, getNextSort, sortIndex, changeComplete } from './data/state'
 import { saveProps, loadProps } from './services/localstorage';
 
 export let doRenderComp = () => {
@@ -16,6 +16,7 @@ export let doRenderComp = () => {
         delTask={delTask}
         getNextSort={getNextSort}
         sortIndex={sortIndex}
+        changeComplete={changeComplete}
       />
     </BrowserRouter>,
     document.getElementById('root'),
@@ -29,3 +30,4 @@ try {
 doRenderComp(tasksProps);
 subscribe(doRenderComp);
 saveProps(tasksProps.objData);
+console.log(tasksProps.objData);

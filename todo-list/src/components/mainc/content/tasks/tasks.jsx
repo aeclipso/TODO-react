@@ -10,7 +10,8 @@ export const Tasks = ({
   date,
   priority,
   delTask,
-  complete
+  complete,
+  changeComplete
 }) => (
   <div className={style.tasks}>
     <Task
@@ -20,6 +21,7 @@ export const Tasks = ({
       date={date}
       priority={priority}
       complete={complete}
+      changeComplete={changeComplete}
       delTask={delTask}
     />
   </div>

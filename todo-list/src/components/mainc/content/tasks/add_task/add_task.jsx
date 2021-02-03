@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import style from './add_task.module.css';
-import moment from 'moment'
 
 export const AddTask = ({ addTask }, props) => {
   const options = [
@@ -20,8 +19,8 @@ export const AddTask = ({ addTask }, props) => {
   ));
 
   const [form, setForm] = useState({
-    text: '-',
-    date: Date,
+    text: '',
+    date: '',
     priority: 'Тип задачи: рабочая',
   });
 
@@ -34,6 +33,7 @@ export const AddTask = ({ addTask }, props) => {
 
   const addTaskEl = () => {
     addTask(form.text, form.date, form.priority);
+    setForm({text: '', date: '', priority: 'Тип задачи: рабочая' });
   };
 
   return (
@@ -41,9 +41,9 @@ export const AddTask = ({ addTask }, props) => {
       <div>
         <textarea
           className={style.inputarea}
-          value={props.newTaskText}
           name="text"
           onChange={update}
+          value={form.text}
         />
       </div>
       <div className={style.otherinput}>
@@ -53,7 +53,7 @@ export const AddTask = ({ addTask }, props) => {
             type="date"
             onChange={update}
             name="date"
-
+            value={form.date}
           />
         </div>
         <div>
@@ -61,6 +61,7 @@ export const AddTask = ({ addTask }, props) => {
             className={`${style.inputs} ${style.inputs_size}`}
             onChange={update}
             name="priority"
+            value={form.priority}
           >
             {optionTags}
           </select>

@@ -1,20 +1,23 @@
 .task{
-    background-color: #ffffff33;
     list-style: none;
+    color: black;
+    text-shadow: gray 2px 1px;
 }
 
 h2{
-    color: #45fe45;
+    color: #303030ff;
+    text-shadow: black 1px 1px;
 }
 
 .complete{
-    text-decoration: line-through;
+    text-decoration: line-through 5px whitesmoke;
 }
 
 .backColorRed{
     background-color: rgb(211,51,34);
     background: linear-gradient(15deg, rgba(195,108,34,1) 0%, rgba(253,45,45,1) 100%);
 }
+
 
 .backColorYellow {
     background-color: rgb(195, 108, 34);

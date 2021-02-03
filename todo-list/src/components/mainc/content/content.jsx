@@ -10,7 +10,8 @@ export const Content = ({
   addTask,
   delTask,
   getNextSort,
-  sortIndex
+  sortIndex,
+  changeComplete
 }) => {
   const tasksTags = tasksProps.map((getTag) => (
     <Tasks
@@ -22,6 +23,7 @@ export const Content = ({
       priority={getTag.priority}
       complete={getTag.complete}
       delTask={delTask}
+      changeComplete={changeComplete}
     />
   ));
 

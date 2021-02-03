@@ -2,7 +2,7 @@ import React from 'react';
 import style from './task.module.css';
 import PropTypes from 'prop-types';
 import { useState } from 'react'
-import moment from 'moment'
+import {EditTask} from './editTask'
 
 export const Task = ({
   text,
@@ -11,39 +11,36 @@ export const Task = ({
   date,
   priority,
   delTask,
-  complete
+  complete,
+  changeComplete
 }) => {
   const delTaskElem = id;
   const deleteTaskEl = () => {
     delTask(delTaskElem);
   };
-  const [isComplete, setComplete] = useState(false);
+  const [isComplete, setComplete] = useState(!complete);
+
   const handleChange = () => {
     setComplete(!isComplete);
+    console.log(isComplete);
+    changeComplete(isComplete, id);
   }
 
   const getDiffDate = (date) => {
-    console.log("DATE1: " + date);
-    let day1 = moment(date).unix();
-    // console.log("DATE1_: " + day1);
-
-    let day2 = new Date();
-    console.log("DATE2: " + day2);
-    day2 = moment.now(day2) / 1000;
-    // console.log("DATE2_: " + day2);
-
-    const razd = 60 * 60 * 24;
-  let diff = Math.round(day1/razd - day2/razd);
-    // console.log("UNIX D1:" + moment(day1).unix());
-    // console.log("UNIX D2:" + moment(day2).unix());
-    // let diff =  (moment(day1).unix() - moment(day2).unix()) / (60 * 60 * 24);
-    console.log("DIFF : " + diff);
-    return (diff);
+    let taskDate;
+    if (date === ''){
+      taskDate = new Date();
+    }
+    else {
+      taskDate = new Date(date);
+    }
+    let today =  new Date();
+    let diffDays = Math.round((taskDate.getTime() - today.getTime()) / (1000 * 60 * 60 * 24));
+    return(diffDays);
   };
 
   const getStyle = () => {
     let numStyle = getDiffDate(date);
-    console.log("GETSTYLE : " + numStyle);
     if (numStyle >= 5){
       return (style.backColorGreen);
     }
@@ -57,13 +54,15 @@ export const Task = ({
 
   return (
     <div
-      className={`${style.task} + ${isComplete ? style.complete : ''} ${getStyle()}`}>
+      className={`${style.task} + ${!isComplete ? style.complete : ''} ${getStyle()}`}>
       <h2>{head}</h2>
       <p>{text}</p>
       <p>{date}</p>
       <p>{priority}</p>
-      <input onChange={handleChange} type="checkbox"/>
+      <EditTask/>
+      <input onChange={handleChange} type="checkbox" defaultChecked={complete} />
       <button onClick={deleteTaskEl}>Удалить</button>
+
       <button>Редактировать</button>
     </div>
   );
