@@ -12,7 +12,8 @@ export const Task = ({
   priority,
   delTask,
   complete,
-  changeComplete
+  changeComplete,
+  editTask
 }) => {
   const delTaskElem = id;
   const deleteTaskEl = () => {
@@ -22,9 +23,13 @@ export const Task = ({
 
   const handleChange = () => {
     setComplete(!isComplete);
-    console.log(isComplete);
     changeComplete(isComplete, id);
   }
+
+  const handleEditTask = () => {
+
+  }
+
 
   const getDiffDate = (date) => {
     let taskDate;
@@ -59,11 +64,10 @@ export const Task = ({
       <p>{text}</p>
       <p>{date}</p>
       <p>{priority}</p>
-      <EditTask/>
+      <EditTask text={text} id={id} date={date} priority={priority} state={false}/>
       <input onChange={handleChange} type="checkbox" defaultChecked={complete} />
       <button onClick={deleteTaskEl}>Удалить</button>
-
-      <button>Редактировать</button>
+      <button onClick={handleEditTask}>Редактировать</button>
     </div>
   );
 };
@@ -75,5 +79,6 @@ Task.propTypes = {
   date: PropTypes.number,
   priority: PropTypes.string,
   complete: PropTypes.bool,
-  delTask: PropTypes.func
+  delTask: PropTypes.func,
+  editTask: PropTypes.func
 }

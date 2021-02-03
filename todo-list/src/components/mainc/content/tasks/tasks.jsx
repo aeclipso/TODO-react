@@ -11,7 +11,8 @@ export const Tasks = ({
   priority,
   delTask,
   complete,
-  changeComplete
+  changeComplete,
+  editTask
 }) => (
   <div className={style.tasks}>
     <Task
@@ -23,6 +24,7 @@ export const Tasks = ({
       complete={complete}
       changeComplete={changeComplete}
       delTask={delTask}
+      editTask={editTask}
     />
   </div>
 );
@@ -35,4 +37,5 @@ Tasks.propTypes = {
   priority: PropTypes.string,
   complete: PropTypes.bool,
   delTask: PropTypes.func,
+  editTask: PropTypes.func
 };

@@ -11,11 +11,12 @@ export const Content = ({
   delTask,
   getNextSort,
   sortIndex,
-  changeComplete
+  changeComplete,
+  editTask
 }) => {
-  const tasksTags = tasksProps.map((getTag) => (
+  const tasksTags = tasksProps.map((getTag, index) => (
     <Tasks
-      key={tasksProps.id}
+      key={index}
       id={getTag.id}
       text={getTag.text}
       head={getTag.title}
@@ -24,6 +25,7 @@ export const Content = ({
       complete={getTag.complete}
       delTask={delTask}
       changeComplete={changeComplete}
+      editTask={editTask}
     />
   ));
 
@@ -41,5 +43,6 @@ export const Content = ({
 Content.propTypes = {
   taskProps: PropTypes.object,
   addTask: PropTypes.func,
-  delTask: PropTypes.func
+  delTask: PropTypes.func,
+  editTask: PropTypes.func
 };

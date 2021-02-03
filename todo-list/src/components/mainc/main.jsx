@@ -9,7 +9,8 @@ export const Main = ({
   delTask,
   getNextSort,
   sortIndex,
-  changeComplete
+  changeComplete,
+  editTask
 }) => (
   <div className={style.main}>
     <Content
@@ -19,6 +20,7 @@ export const Main = ({
       getNextSort={getNextSort}
       sortIndex={sortIndex}
       changeComplete={changeComplete}
+      editTask={editTask}
     />
   </div>
 );
@@ -28,5 +30,6 @@ Main.propTypes = {
   addTask: PropTypes.func,
   delTask: PropTypes.func,
   getNextSort: PropTypes.func,
-  sortIndex: PropTypes.number
+  sortIndex: PropTypes.number,
+  editTask: PropTypes.func
 };

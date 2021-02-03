@@ -9,7 +9,8 @@ export const App = ({
   delTask,
   getNextSort,
   sortIndex,
-  changeComplete
+  changeComplete,
+  editTask
 }) => {
   return (
     <div className="App">
@@ -20,6 +21,7 @@ export const App = ({
         getNextSort={getNextSort}
         sortIndex={sortIndex}
         changeComplete={changeComplete}
+        editTask={editTask}
       />
     </div>);
 };
@@ -29,5 +31,6 @@ App.propTypes = {
   addTask: PropTypes.func,
   delTask: PropTypes.func,
   getNextSort: PropTypes.func,
-  sortIndex: PropTypes.number
+  sortIndex: PropTypes.number,
+  editTask: PropTypes.func
 }

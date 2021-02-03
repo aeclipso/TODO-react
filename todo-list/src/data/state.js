@@ -119,6 +119,15 @@ export const delTask = (idTask) => {
   doRenderComp(tasksProps);
   saveProps(tasksProps.objData);
 };
+
+export const editTask = (idTask, textTask, dateTask, priorityTask) =>
+{
+  let id = getIdComplete(idTask);
+  tasksProps.objData[id].text = textTask;
+  tasksProps.objData[id].date = dateTask;
+  tasksProps.objData[id].priority = priorityTask;
+}
+
 export const subscribe = (observer) => {
   doRenderComp = observer;
 };

@@ -5,30 +5,20 @@ export const SortBtn = ({
   getNextSort,
   sortIndex
 }) => {
+  console.log(sortIndex);
   const nameArrBtn = [
     'Не отсортировано',
     'По важности',
     'По сроку истечения'
   ];
 
-  const [btn, setBtn] = useState({
-    sortIndex: 0,
-  });
-
-  const update = (e) => {
-    setBtn({
-      ...btn,
-      [e.target.name]: e.target.value,
-    });
- };
-
+  // const [btn, setBtn] = useState({ sortIndex  });
   const doSortElement = () => {
     getNextSort(sortIndex);
   }
-
   return (
     <div>
-      <button onClick={doSortElement} onChange={update}>{nameArrBtn[sortIndex]}</button>
+      <button onClick={doSortElement} >{nameArrBtn[sortIndex]}</button>
     </div>
   );
 };

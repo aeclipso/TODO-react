@@ -3,8 +3,7 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import { BrowserRouter } from 'react-router-dom';
 import { App } from './App';
-
-import tasksProps, { subscribe, addTask, delTask, getNextSort, sortIndex, changeComplete } from './data/state'
+import tasksProps, { subscribe, addTask, delTask, getNextSort, sortIndex, changeComplete, editTask } from './data/state'
 import { saveProps, loadProps } from './services/localstorage';
 
 export let doRenderComp = () => {
@@ -17,6 +16,7 @@ export let doRenderComp = () => {
         getNextSort={getNextSort}
         sortIndex={sortIndex}
         changeComplete={changeComplete}
+        editTask={editTask}
       />
     </BrowserRouter>,
     document.getElementById('root'),
